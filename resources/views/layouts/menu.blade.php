@@ -1,0 +1,9 @@
+<li><a href="/medicos">Medicos</a></li>
+<li><a href="/consultorios">Consultorios</a></li>
+<li><a href="/empleados">Empleados</a></li>
+<li><a href="/sueldos">Sueldos</a></li>
+<li><a href="/rentas">Rentas</a></li>
+<li><a href="/eventos">Eventos</a></li>
+<li><a href="/certificados">Certificados</a></li>
+<li><a href="/consultas">Consultas</a></li>
+<li><a href="/centroMedicos">Centros Medicos</a></li>

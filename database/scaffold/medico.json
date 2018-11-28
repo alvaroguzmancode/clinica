@@ -1,0 +1,14 @@
+[
+    {
+        "name": "nombre",
+        "dbType": "string,250",
+        "htmlType": "text",
+        "validations": "required"
+    } ,
+    {
+        "name": "apellido_paterno",
+        "dbType": "string,250",
+        "htmlType": "text",
+        "validations": "required"
+    } 
+]

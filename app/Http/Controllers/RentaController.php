@@ -55,6 +55,13 @@ class RentaController extends AppBaseController
      */
     public function store(CreateRentaRequest $request)
     {
+
+        $request->validate([
+            "descripcion"=>"required|max:250",
+            "cobro"=>"required",
+            "consultorio_id"=>"required|integer"
+        ]);
+    
         $input = $request->all();
 
         $renta = $this->rentaRepository->create($input);

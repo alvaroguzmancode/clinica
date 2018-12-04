@@ -55,6 +55,10 @@ class CentroMedicoController extends AppBaseController
      */
     public function store(CreateCentroMedicoRequest $request)
     {
+        $request->validate([
+            "descripcion"=>"required|max:250"
+        ]);
+
         $input = $request->all();
 
         $centroMedico = $this->centroMedicoRepository->create($input);
@@ -93,6 +97,7 @@ class CentroMedicoController extends AppBaseController
      */
     public function edit($id)
     {
+
         $centroMedico = $this->centroMedicoRepository->findWithoutFail($id);
 
         if (empty($centroMedico)) {
@@ -114,6 +119,10 @@ class CentroMedicoController extends AppBaseController
      */
     public function update($id, UpdateCentroMedicoRequest $request)
     {
+        $request->validate([
+            "descripcion"=>"required|max:250"
+        ]);
+
         $centroMedico = $this->centroMedicoRepository->findWithoutFail($id);
 
         if (empty($centroMedico)) {

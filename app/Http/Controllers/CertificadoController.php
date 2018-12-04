@@ -55,6 +55,11 @@ class CertificadoController extends AppBaseController
      */
     public function store(CreateCertificadoRequest $request)
     {
+        $request->validate([
+            "descripcion"=>"required|max:250",
+            "tipo_certificado"=>"required"
+        ]);
+
         $input = $request->all();
 
         $certificado = $this->certificadoRepository->create($input);
@@ -114,6 +119,11 @@ class CertificadoController extends AppBaseController
      */
     public function update($id, UpdateCertificadoRequest $request)
     {
+        $request->validate([
+            "descripcion"=>"required|max:250",
+            "tipo_certificado"=>"required"
+        ]);
+
         $certificado = $this->certificadoRepository->findWithoutFail($id);
 
         if (empty($certificado)) {

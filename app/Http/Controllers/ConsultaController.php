@@ -43,6 +43,7 @@ class ConsultaController extends AppBaseController
      */
     public function create()
     {
+
         return view('consultas.create');
     }
 
@@ -55,6 +56,18 @@ class ConsultaController extends AppBaseController
      */
     public function store(CreateConsultaRequest $request)
     {
+
+        $request->validate([
+            "descripcion"=>"required|max:250",
+            "importe"=>"required",
+            "monto"=>"required",
+            "descuento"=>"required",
+            "total"=>"required",
+            "metodo_pago_id"=>"required|integer",
+            "consultorio_id"=>"required|integer",
+            "medico_id"=>"required|integer",
+        ]);
+
         $input = $request->all();
 
         $consulta = $this->consultaRepository->create($input);
@@ -93,6 +106,7 @@ class ConsultaController extends AppBaseController
      */
     public function edit($id)
     {
+
         $consulta = $this->consultaRepository->findWithoutFail($id);
 
         if (empty($consulta)) {
@@ -114,6 +128,18 @@ class ConsultaController extends AppBaseController
      */
     public function update($id, UpdateConsultaRequest $request)
     {
+
+        $request->validate([
+            "descripcion"=>"required|max:250",
+            "importe"=>"required",
+            "monto"=>"required",
+            "descuento"=>"required",
+            "total"=>"required",
+            "metodo_pago_id"=>"required|integer",
+            "consultorio_id"=>"required|integer",
+            "medico_id"=>"required|integer"
+        ]);
+
         $consulta = $this->consultaRepository->findWithoutFail($id);
 
         if (empty($consulta)) {

@@ -6,8 +6,14 @@
 
 <!-- Cobro Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('cobro', 'Cobro:') !!}
-    {!! Form::text('cobro', null, ['class' => 'form-control']) !!}
+    {!! Form::label('cobro', 'Cobro:', ['class'=>'custom-select']) !!}
+    {!! 
+        Form::select('cobro', array(
+            'semanal'=>'Semanal',
+            'mensual'=>'Mensual',
+            'anual'=>'Anual',
+        ));
+    !!}
 </div>
 
 <!-- Consultorio Id Field -->

@@ -55,6 +55,11 @@ class ConsultorioController extends AppBaseController
      */
     public function store(CreateConsultorioRequest $request)
     {
+
+        $request->validate([
+            "descripcion"=>"required|max:250",
+        ]);
+
         $input = $request->all();
 
         $consultorio = $this->consultorioRepository->create($input);
@@ -93,6 +98,7 @@ class ConsultorioController extends AppBaseController
      */
     public function edit($id)
     {
+
         $consultorio = $this->consultorioRepository->findWithoutFail($id);
 
         if (empty($consultorio)) {
@@ -114,6 +120,11 @@ class ConsultorioController extends AppBaseController
      */
     public function update($id, UpdateConsultorioRequest $request)
     {
+
+        $request->validate([
+            "descripcion"=>"required|max:250",
+        ]);
+        
         $consultorio = $this->consultorioRepository->findWithoutFail($id);
 
         if (empty($consultorio)) {

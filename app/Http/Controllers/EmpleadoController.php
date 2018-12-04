@@ -55,6 +55,26 @@ class EmpleadoController extends AppBaseController
      */
     public function store(CreateEmpleadoRequest $request)
     {
+
+        $request->validate([
+            "nombre"=>"required|max:50",
+            "apellido_paterno"=>"required|max:50",
+            "apellido_materno"=>"required|max:50",
+            "curp"=>"required|max:50",
+            "cedula"=>"required|max:50",
+            "profesion"=>"required|max:50",
+            "especialidad"=>"required|max:50",
+            "fotografia"=>"required|max:50",
+            "telefono_fijo"=>"required|max:50",
+            "telefono_movil"=>"required|max:50",
+            "domicilio"=>"required|max:50",
+            "codigo_postal"=>"required|max:50",
+            "rfc"=>"required|max:50",
+            "numero_seguro_social"=>"required|max:50",
+            "password"=>"max:50",
+            "email"=>"required|email|unique:empleados",
+        ]);
+
         $input = $request->all();
 
         $empleado = $this->empleadoRepository->create($input);
@@ -93,6 +113,7 @@ class EmpleadoController extends AppBaseController
      */
     public function edit($id)
     {
+
         $empleado = $this->empleadoRepository->findWithoutFail($id);
 
         if (empty($empleado)) {
@@ -114,6 +135,25 @@ class EmpleadoController extends AppBaseController
      */
     public function update($id, UpdateEmpleadoRequest $request)
     {
+        $request->validate([
+            "nombre"=>"required|max:50",
+            "apellido_paterno"=>"required|max:50",
+            "apellido_materno"=>"required|max:50",
+            "curp"=>"required|max:50",
+            "cedula"=>"required|max:50",
+            "profesion"=>"required|max:50",
+            "especialidad"=>"required|max:50",
+            "fotografia"=>"required|max:50",
+            "telefono_fijo"=>"required|max:50",
+            "telefono_movil"=>"required|max:50",
+            "domicilio"=>"required|max:50",
+            "codigo_postal"=>"required|max:50",
+            "rfc"=>"required|max:50",
+            "numero_seguro_social"=>"required|max:50",
+            "password"=>"max:50",
+            "email"=>"required|email|unique:empleados",
+        ]);
+
         $empleado = $this->empleadoRepository->findWithoutFail($id);
 
         if (empty($empleado)) {

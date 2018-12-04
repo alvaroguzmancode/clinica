@@ -55,6 +55,14 @@ class EventoController extends AppBaseController
      */
     public function store(CreateEventoRequest $request)
     {
+        $request->validate([
+            "fecha_inicio"=>"required|date",
+            "fecha_fin"=>"required|date",
+            "descripcion"=>"required|max:250",
+            "tipo_evento"=>"required",
+            "certificado_id"=>"required|integer"
+        ]);
+
         $input = $request->all();
 
         $evento = $this->eventoRepository->create($input);
@@ -114,6 +122,14 @@ class EventoController extends AppBaseController
      */
     public function update($id, UpdateEventoRequest $request)
     {
+        $request->validate([
+            "fecha_inicio"=>"required|date",
+            "fecha_fin"=>"required|date",
+            "descripcion"=>"required|max:250",
+            "tipo_evento"=>"required",
+            "certificado_id"=>"required|integer"
+        ]);
+
         $evento = $this->eventoRepository->findWithoutFail($id);
 
         if (empty($evento)) {

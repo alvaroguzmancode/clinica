@@ -55,6 +55,14 @@ class SueldoController extends AppBaseController
      */
     public function store(CreateSueldoRequest $request)
     {
+        $request->validate([
+            "fecha_inicio"=>"required|date",
+            "fecha_fin"=>"required|date",
+            "isr"=>"required|numeric",
+            "imss"=>"required|numeric",
+            "neto"=>"required|numeric"
+        ]);
+
         $input = $request->all();
 
         $sueldo = $this->sueldoRepository->create($input);
@@ -93,6 +101,7 @@ class SueldoController extends AppBaseController
      */
     public function edit($id)
     {
+
         $sueldo = $this->sueldoRepository->findWithoutFail($id);
 
         if (empty($sueldo)) {
@@ -114,6 +123,14 @@ class SueldoController extends AppBaseController
      */
     public function update($id, UpdateSueldoRequest $request)
     {
+
+        $request->validate([
+            "fecha_inicio"=>"required|date",
+            "fecha_fin"=>"required|date",
+            "isr"=>"required|numeric",
+            "imss"=>"required|numeric",
+            "neto"=>"required|numeric"
+        ]);
         $sueldo = $this->sueldoRepository->findWithoutFail($id);
 
         if (empty($sueldo)) {
